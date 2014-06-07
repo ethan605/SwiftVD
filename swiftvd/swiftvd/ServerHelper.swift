@@ -53,7 +53,7 @@ class ServerHelper: AFHTTPSessionManager {
       })
   }
   
-  func getNewTopics(atPage page: Int, callback block: (data: Dictionary<String, AnyObject>?, errorMessage: String?) -> Void) {
+  func getNewTopics(atPage page: Int, callback block: (data: MTopic[]?, errorMessage: String?) -> Void) {
     self.GET("Topic/GetNewTopics",
       parameters: ["page" : page],
       success: {
@@ -65,7 +65,24 @@ class ServerHelper: AFHTTPSessionManager {
           if errorMessage {
             block(data: nil, errorMessage: errorMessage)
           } else if authenticated {
-            block(data: [:], errorMessage: nil)
+            var allTopics = MTopic[]()
+            
+            if let content: NSDictionary = responseObject.valueForKey("content") as NSDictionary! {
+              if let topics: NSArray = content["topics"] as NSArray! {
+//                var firstObj : AnyObject! = topics[0]
+                for dict : AnyObject in topics {
+                  var mTopic = MTopic()
+                  mTopic.assignProperties(dict as NSDictionary)
+                  allTopics += mTopic
+                }
+                
+                block(data: allTopics, errorMessage: nil)
+              } else {
+                block(data: nil, errorMessage: "Invalid response format \(content)")
+              }
+            } else {
+              block(data: nil, errorMessage: "Invalid response format")
+            }
           } else {
             self.verifyKey() {
               (success: Bool, errorMessage: String?) -> Void in

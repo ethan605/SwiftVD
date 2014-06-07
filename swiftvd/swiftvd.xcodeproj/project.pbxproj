@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9E9DA8352A7B4821AAC872D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79C2C30C4334C798097B402 /* libPods.a */; };
+		AA9F4A5319437D3D00CD38B1 /* MTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F4A5219437D3D00CD38B1 /* MTopic.swift */; };
+		AA9F4A5719437E6500CD38B1 /* NSObject+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9F4A5619437E6500CD38B1 /* NSObject+ObjectMapping.m */; };
+		AA9F4A591943822200CD38B1 /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F4A581943822200CD38B1 /* MUser.swift */; };
 		AAAFD0D71942C1EF002F10B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFD0D61942C1EF002F10B3 /* AppDelegate.swift */; };
 		AAAFD0D91942C1F0002F10B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAFD0D81942C1F0002F10B3 /* Images.xcassets */; };
 		AAAFD0F61942C83A002F10B3 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFD0F51942C83A002F10B3 /* ServerHelper.swift */; };
@@ -15,6 +18,10 @@
 
 /* Begin PBXFileReference section */
 		2B5371296B6C42A68C833885 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AA9F4A5219437D3D00CD38B1 /* MTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTopic.swift; sourceTree = "<group>"; };
+		AA9F4A5519437E6500CD38B1 /* NSObject+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ObjectMapping.h"; sourceTree = "<group>"; };
+		AA9F4A5619437E6500CD38B1 /* NSObject+ObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjectMapping.m"; sourceTree = "<group>"; };
+		AA9F4A581943822200CD38B1 /* MUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
 		AAAFD0D11942C1EF002F10B3 /* swiftvd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftvd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAFD0D51942C1EF002F10B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAFD0D61942C1EF002F10B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +52,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA9F4A5119437D1400CD38B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA9F4A5219437D3D00CD38B1 /* MTopic.swift */,
+				AA9F4A581943822200CD38B1 /* MUser.swift */,
+			);
+			name = Models;
+			path = models;
+			sourceTree = "<group>";
+		};
+		AA9F4A5419437E1200CD38B1 /* ObjectiveC Bridge Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AA9F4A5519437E6500CD38B1 /* NSObject+ObjectMapping.h */,
+				AA9F4A5619437E6500CD38B1 /* NSObject+ObjectMapping.m */,
+			);
+			name = "ObjectiveC Bridge Classes";
+			path = "objc-bridge-classes";
+			sourceTree = "<group>";
+		};
 		AAAFD0C81942C1EE002F10B3 = {
 			isa = PBXGroup;
 			children = (
@@ -66,11 +93,13 @@
 		AAAFD0D31942C1EF002F10B3 /* swiftvd */ = {
 			isa = PBXGroup;
 			children = (
-				AAAFD0F41942C781002F10B3 /* swiftvd-Bridging-Header.h */,
 				AAAFD0D61942C1EF002F10B3 /* AppDelegate.swift */,
 				AAAFD0D81942C1F0002F10B3 /* Images.xcassets */,
-				AAAFD0D41942C1EF002F10B3 /* Supporting Files */,
+				AA9F4A5119437D1400CD38B1 /* Models */,
+				AA9F4A5419437E1200CD38B1 /* ObjectiveC Bridge Classes */,
 				AAAFD0F51942C83A002F10B3 /* ServerHelper.swift */,
+				AAAFD0D41942C1EF002F10B3 /* Supporting Files */,
+				AAAFD0F41942C781002F10B3 /* swiftvd-Bridging-Header.h */,
 				AAAFD0F71942CB04002F10B3 /* Test.playground */,
 			);
 			path = swiftvd;
@@ -187,7 +216,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAFD0F61942C83A002F10B3 /* ServerHelper.swift in Sources */,
+				AA9F4A5719437E6500CD38B1 /* NSObject+ObjectMapping.m in Sources */,
 				AAAFD0D71942C1EF002F10B3 /* AppDelegate.swift in Sources */,
+				AA9F4A591943822200CD38B1 /* MUser.swift in Sources */,
+				AA9F4A5319437D3D00CD38B1 /* MTopic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

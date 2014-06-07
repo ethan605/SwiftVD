@@ -18,12 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window!.makeKeyAndVisible()
     
     ServerHelper.sharedHelper.getNewTopics(atPage: 1) {
-      (data: Dictionary<String, AnyObject>?, errorMessage: String?) -> Void in
+      (data: MTopic[]?, errorMessage: String?) -> Void in
       
       if errorMessage {
         NSLog("Error: \(errorMessage)")
       } else {
         NSLog("Data: \(data)")
+        let topic: MTopic? = data![0]
+        
+        if let user: MUser = topic!.user {
+          NSLog("\(topic!.title) - \(topic!.photos) - \(user.absUserUrl) - \(user.displayName)")
+        }
       }
     }
     
