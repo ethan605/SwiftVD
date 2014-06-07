@@ -17,12 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window!.backgroundColor = UIColor.whiteColor()
     self.window!.makeKeyAndVisible()
     
-//    ServerHelper.sharedHelper.verifyKey() {
-//      (success: Bool) -> () in
-//      ServerHelper.sharedHelper.getNewTopics(atPage: 1)
-//    }
-    
-    ServerHelper.sharedHelper.getNewTopics(atPage: 1)
+    ServerHelper.sharedHelper.getNewTopics(atPage: 1) {
+      (data: Dictionary<String, AnyObject>?, errorMessage: String?) -> Void in
+      
+      if errorMessage {
+        NSLog("Error: \(errorMessage)")
+      } else {
+        NSLog("Data: \(data)")
+      }
+    }
     
     return true
   }

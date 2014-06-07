@@ -28,7 +28,9 @@ class ServerHelper: AFHTTPSessionManager {
   }
   }
   
-  func verifyKey(completion block: (success: Bool) -> ()) {
+  func verifyKey(completion block: (success: Bool) -> Void) -> Void {
+    NSLog("Verify API with key \(kServerApiKey)")
+    
     self.GET("VerifyKey",
       parameters: ["key" : kServerApiKey],
       success: {
@@ -42,42 +44,39 @@ class ServerHelper: AFHTTPSessionManager {
       })
   }
   
-  func getNewTopics(atPage page: Int) {
+  func getNewTopics(atPage page: Int, callback block: (data: Dictionary<String, AnyObject>?, errorMessage: String?) -> Void) {
     self.GET("Topic/GetNewTopics",
       parameters: ["page" : page],
       success: {
         (task: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
         
-        let responseDict = responseObject as Dictionary<String, String>
-
-        if let codeStr: String? = responseDict["code"] {
-          if let code: Int? = codeStr!.toInt() {
+        if let codeNumber : AnyObject? = responseObject.valueForKey("code") {
+          if let code = codeNumber!.integerValue {
             if code == 200 {
-              NSLog("\(responseDict)")
+              block(data: ["content" : "topics"], errorMessage: nil)
+            } else if code == 401 {
+              self.verifyKey() {
+                (success: Bool) -> Void in
+                
+                if success {
+                  self.getNewTopics(atPage: page, callback: block)
+                } else {
+                  NSLog("error!")
+                }
+              }
             } else {
-              NSLog("\(code)")
-//              self.verifyKey(completion: {
-//                (success: Bool) -> () in
-//                self.getNewTopics(atPage: page)
-//                })
+              block(data: nil, errorMessage: "Invalid response code: \(code)")
             }
           } else {
-            NSLog("no integer code")
-//            self.verifyKey(completion: {
-//              (success: Bool) -> () in
-//              self.getNewTopics(atPage: page)
-//              })
+            block(data: nil, errorMessage: "Invalid response code format: \(codeNumber)")
           }
         } else {
-          NSLog("no code")
-//          self.verifyKey(completion: {
-//            (success: Bool) -> () in
-//            self.getNewTopics(atPage: page)
-//            })
+          block(data: nil, errorMessage: "Invalid response body: \(responseObject)")
         }
       }, failure: {
         (task: NSURLSessionDataTask!, error: NSError!) -> Void in
         NSLog("\(error)");
+        block(data: nil, errorMessage: "\(error.localizedDescription)")
       })
   }
 }
