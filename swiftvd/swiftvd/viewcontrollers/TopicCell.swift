@@ -41,6 +41,8 @@ class TopicCell: UITableViewCell {
     lblTitle.frame.size.height = sizeThatFits.height
     lblTitle.superview.frame.size.height = lblTitle.frame.origin.y*2 + lblTitle.frame.size.height
     
-    imgFirstImage.setImageWithURL(NSURL(string: topicData.coverPhoto))
+    var coverPhoto = topicData.coverPhoto!
+
+    imgFirstImage.setImageWithURL(NSURL(string: coverPhoto.photoURL))
   }
 }

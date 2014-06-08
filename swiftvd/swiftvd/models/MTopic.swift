@@ -35,8 +35,13 @@ extension NSObject {
 }
 
 class MTopic: NSObject {
+  struct CoverPhoto {
+    var photoURL: String?
+    var size: CGSize = CGSizeZero
+  }
+  
   var title: String = "Topic title"
-  var coverPhoto: String?
+  var coverPhoto: CoverPhoto?
   var photos: String[]?
   var user: MUser?
   
@@ -55,8 +60,8 @@ class MTopic: NSObject {
       self.user = MUser(dictionary: userData)
     }
     
-    if let firstPhoto = photos![0] as String! {
-      coverPhoto = firstPhoto
+    if let photoURL = photos![0] as String! {
+      coverPhoto = CoverPhoto(photoURL: photoURL, size: CGSizeZero)
     }
   }
 }
