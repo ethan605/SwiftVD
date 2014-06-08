@@ -36,7 +36,7 @@ extension NSObject {
 
 class MTopic: NSObject {
   var title: String = "Topic title"
-  var absWidgetImage: String?
+  var coverPhoto: String?
   var photos: String[]?
   var user: MUser?
   
@@ -51,8 +51,12 @@ class MTopic: NSObject {
     
     super.assignPropertiesFromDict(normalizedDict)
     
-    if let userData: NSDictionary = normalizedDict["user"] as NSDictionary! {
+    if let userData = normalizedDict["user"] as NSDictionary! {
       self.user = MUser(dictionary: userData)
+    }
+    
+    if let firstPhoto = photos![0] as String! {
+      coverPhoto = firstPhoto
     }
   }
 }

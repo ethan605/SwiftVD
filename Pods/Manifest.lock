@@ -19,13 +19,18 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.8)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - MBProgressHUD (~> 0.8)
+  - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
 
 COCOAPODS: 0.32.1

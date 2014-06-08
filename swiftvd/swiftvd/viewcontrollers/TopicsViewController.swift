@@ -62,7 +62,7 @@ class TopicsViewController: BaseViewController, UITableViewDataSource, UITableVi
   }
   
   func getAllTopicsAtCurrentPage() {
-    ServerHelper.sharedHelper.getNewTopics(atPage: 1) {
+    ServerHelper.sharedHelper().getNewTopics(atPage: 1) {
       (data: MTopic[]?, errorMessage: String?) -> Void in
       
       if errorMessage {

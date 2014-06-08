@@ -11,21 +11,19 @@ import Foundation
 let kServerUrl = "http://open-api.depvd.com"
 let kServerApiKey = "8FDON-OH3JX-H4XYF-TBFGV-YFNGR"
 
+struct SingletonServerHelper {
+  static var sharedInstance: ServerHelper? = nil
+  static var token: dispatch_once_t = 0
+}
+
 class ServerHelper: AFHTTPSessionManager {
-  class var sharedHelper: ServerHelper {
-    get {
-      struct Static {
-        static var sharedInstance: ServerHelper? = nil
-        static var token: dispatch_once_t = 0
-      }
-      
-      dispatch_once(&Static.token,
-        {
-          Static.sharedInstance = ServerHelper(baseURL: NSURL(string: kServerUrl))
-        })
-      
-      return Static.sharedInstance!
-  }
+  class func sharedHelper() -> ServerHelper {
+    dispatch_once(&SingletonServerHelper.token,
+      {
+        SingletonServerHelper.sharedInstance = ServerHelper(baseURL: NSURL(string: kServerUrl))
+      })
+    
+    return SingletonServerHelper.sharedInstance!
   }
   
   func verifyKey(completionBlock: (success: Bool, errorMessage: String?) -> Void) {
