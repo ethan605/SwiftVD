@@ -7,4 +7,3 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "NSObject+ObjectMapping.h"

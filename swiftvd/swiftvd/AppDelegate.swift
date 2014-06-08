@@ -23,11 +23,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if errorMessage {
         NSLog("Error: \(errorMessage)")
       } else {
-        NSLog("Data: \(data)")
+        NSLog("Data: \(data!.count)")
         let topic: MTopic? = data![0]
         
+        NSLog("\(topic!.title) - \(topic!.photos)")
+        
         if let user: MUser = topic!.user {
-          NSLog("\(topic!.title) - \(topic!.photos) - \(user.absUserUrl) - \(user.displayName)")
+          NSLog("\(user.absUserUrl) - \(user.displayName)")
+        }
+      }
+      
+      dispatch_after(1, dispatch_get_main_queue()) {
+        ServerHelper.sharedHelper.getNewTopics(atPage: 2) {
+          (data: MTopic[]?, errorMessage: String?) -> Void in
+          
+          if errorMessage {
+            NSLog("Error: \(errorMessage)")
+          } else {
+            NSLog("Data: \(data!.count)")
+            let topic: MTopic? = data![0]
+            
+            NSLog("\(topic!.title) - \(topic!.photos)")
+            
+            if let user: MUser = topic!.user {
+              NSLog("\(user.absUserUrl) - \(user.displayName)")
+            }
+          }
         }
       }
     }

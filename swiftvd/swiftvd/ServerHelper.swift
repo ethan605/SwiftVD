@@ -28,7 +28,7 @@ class ServerHelper: AFHTTPSessionManager {
   }
   }
   
-  func verifyKey(completion block: (success: Bool, errorMessage: String?) -> Void) -> Void {
+  func verifyKey(completionBlock: (success: Bool, errorMessage: String?) -> Void) -> Void {
     NSLog("Verify API with key \(kServerApiKey)")
     
     self.GET("VerifyKey",
@@ -40,16 +40,16 @@ class ServerHelper: AFHTTPSessionManager {
           (authenticated: Bool, errorMessage: String?) -> Void in
           
           if errorMessage {
-            block(success: false, errorMessage: errorMessage)
+            completionBlock(success: false, errorMessage: errorMessage)
           } else if !authenticated {
-            block(success: false, errorMessage: "Authentication failed!")
+            completionBlock(success: false, errorMessage: "Authentication failed!")
           } else {
-            block(success: true, errorMessage: nil)
+            completionBlock(success: true, errorMessage: nil)
           }
         }
       }, failure: {
         (task: NSURLSessionDataTask!, error: NSError!) -> Void in
-        block(success: false, errorMessage: "\(error.localizedDescription)")
+        completionBlock(success: false, errorMessage: "\(error.localizedDescription)")
       })
   }
   
@@ -69,10 +69,8 @@ class ServerHelper: AFHTTPSessionManager {
             
             if let content: NSDictionary = responseObject.valueForKey("content") as NSDictionary! {
               if let topics: NSArray = content["topics"] as NSArray! {
-//                var firstObj : AnyObject! = topics[0]
                 for dict : AnyObject in topics {
-                  var mTopic = MTopic()
-                  mTopic.assignProperties(dict as NSDictionary)
+                  var mTopic = MTopic(dictionary: dict as NSDictionary)
                   allTopics += mTopic
                 }
                 
