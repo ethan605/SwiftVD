@@ -13,6 +13,14 @@
 		AAAFD0D71942C1EF002F10B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFD0D61942C1EF002F10B3 /* AppDelegate.swift */; };
 		AAAFD0D91942C1F0002F10B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAFD0D81942C1F0002F10B3 /* Images.xcassets */; };
 		AAAFD0F61942C83A002F10B3 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFD0F51942C83A002F10B3 /* ServerHelper.swift */; };
+		AAD5E42C194413F500157FA4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5E42A194413F500157FA4 /* MainViewController.swift */; };
+		AAD5E42D194413F500157FA4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD5E42B194413F500157FA4 /* MainViewController.xib */; };
+		AAD5E4301944161000157FA4 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5E42E1944161000157FA4 /* TopicsViewController.swift */; };
+		AAD5E4311944161000157FA4 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD5E42F1944161000157FA4 /* TopicsViewController.xib */; };
+		AAD5E433194417D200157FA4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5E432194417D200157FA4 /* BaseViewController.swift */; };
+		AAD5E4351944192400157FA4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5E4341944192400157FA4 /* Utils.swift */; };
+		AAD5E438194442FC00157FA4 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5E436194442FC00157FA4 /* TopicCell.swift */; };
+		AAD5E439194442FC00157FA4 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD5E437194442FC00157FA4 /* TopicCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		AAAFD0F41942C781002F10B3 /* swiftvd-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "swiftvd-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAAFD0F51942C83A002F10B3 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		AAAFD0F71942CB04002F10B3 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
+		AAD5E42A194413F500157FA4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AAD5E42B194413F500157FA4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		AAD5E42E1944161000157FA4 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		AAD5E42F1944161000157FA4 /* TopicsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
+		AAD5E432194417D200157FA4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AAD5E4341944192400157FA4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AAD5E436194442FC00157FA4 /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		AAD5E437194442FC00157FA4 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		E79C2C30C4334C798097B402 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +112,8 @@
 				AAAFD0D41942C1EF002F10B3 /* Supporting Files */,
 				AAAFD0F41942C781002F10B3 /* swiftvd-Bridging-Header.h */,
 				AAAFD0F71942CB04002F10B3 /* Test.playground */,
+				AAD5E4291944139900157FA4 /* View Controllers */,
+				AAD5E4341944192400157FA4 /* Utils.swift */,
 			);
 			path = swiftvd;
 			sourceTree = "<group>";
@@ -106,6 +124,21 @@
 				AAAFD0D51942C1EF002F10B3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAD5E4291944139900157FA4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAD5E432194417D200157FA4 /* BaseViewController.swift */,
+				AAD5E42A194413F500157FA4 /* MainViewController.swift */,
+				AAD5E42B194413F500157FA4 /* MainViewController.xib */,
+				AAD5E42E1944161000157FA4 /* TopicsViewController.swift */,
+				AAD5E42F1944161000157FA4 /* TopicsViewController.xib */,
+				AAD5E436194442FC00157FA4 /* TopicCell.swift */,
+				AAD5E437194442FC00157FA4 /* TopicCell.xib */,
+			);
+			name = "View Controllers";
+			path = viewcontrollers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAFD0D91942C1F0002F10B3 /* Images.xcassets in Resources */,
+				AAD5E439194442FC00157FA4 /* TopicCell.xib in Resources */,
+				AAD5E42D194413F500157FA4 /* MainViewController.xib in Resources */,
+				AAD5E4311944161000157FA4 /* TopicsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +248,13 @@
 			files = (
 				AAAFD0F61942C83A002F10B3 /* ServerHelper.swift in Sources */,
 				AAAFD0D71942C1EF002F10B3 /* AppDelegate.swift in Sources */,
+				AAD5E4301944161000157FA4 /* TopicsViewController.swift in Sources */,
 				AA9F4A591943822200CD38B1 /* MUser.swift in Sources */,
 				AA9F4A5319437D3D00CD38B1 /* MTopic.swift in Sources */,
+				AAD5E433194417D200157FA4 /* BaseViewController.swift in Sources */,
+				AAD5E42C194413F500157FA4 /* MainViewController.swift in Sources */,
+				AAD5E438194442FC00157FA4 /* TopicCell.swift in Sources */,
+				AAD5E4351944192400157FA4 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

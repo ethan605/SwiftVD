@@ -28,7 +28,7 @@ class ServerHelper: AFHTTPSessionManager {
   }
   }
   
-  func verifyKey(completionBlock: (success: Bool, errorMessage: String?) -> Void) -> Void {
+  func verifyKey(completionBlock: (success: Bool, errorMessage: String?) -> Void) {
     NSLog("Verify API with key \(kServerApiKey)")
     
     self.GET("VerifyKey",
@@ -67,8 +67,8 @@ class ServerHelper: AFHTTPSessionManager {
           } else if authenticated {
             var allTopics = MTopic[]()
             
-            if let content: NSDictionary = responseObject.valueForKey("content") as NSDictionary! {
-              if let topics: NSArray = content["topics"] as NSArray! {
+            if let content = responseObject.valueForKey("content") as NSDictionary! {
+              if let topics = content["topics"] as NSArray! {
                 for dict : AnyObject in topics {
                   var mTopic = MTopic(dictionary: dict as NSDictionary)
                   allTopics += mTopic
@@ -99,9 +99,9 @@ class ServerHelper: AFHTTPSessionManager {
       })
   }
   
-  func handleResponse(response responseObject: AnyObject!, callback block:(authenticated: Bool, errorMessage: String?) -> Void) -> Void {
-    if let codeNumber : AnyObject? = responseObject.valueForKey("code") {
-      if let code = codeNumber!.integerValue {
+  func handleResponse(response responseObject: AnyObject!, callback block:(authenticated: Bool, errorMessage: String?) -> Void) {
+    if let codeNumber = responseObject.valueForKey("code") as NSNumber! {
+      if let code = codeNumber.integerValue as Int! {
         switch code {
         case 200:
           block(authenticated: true, errorMessage: nil)
