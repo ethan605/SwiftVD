@@ -35,8 +35,7 @@ class TopicsViewController: BaseViewController, UITableViewDataSource, UITableVi
   }
   
   func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-    let cellIdentifier = "TopicCell"
-    var cell: TopicCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as TopicCell!
+    var cell: TopicCell? = tableView.dequeueReusableCellWithIdentifier(TopicCell.cellIdentifier()) as TopicCell!
     
     if !cell {
       cell = TopicCell()
